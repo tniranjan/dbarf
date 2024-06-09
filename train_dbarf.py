@@ -182,7 +182,7 @@ class DBARFTrainer(IBRNetTrainer):
             aligned_pred_poses, poses_gt = align_predicted_training_poses(
                 pred_rel_poses[:, -1, :], self.train_data, self.train_dataset, self.config.local_rank)
             pose_error = evaluate_camera_alignment(aligned_pred_poses, poses_gt)
-            visualize_cameras(self.visdom, step=self.iteration, poses=[aligned_pred_poses, poses_gt], cam_depth=0.1)
+            # visualize_cameras(self.visdom, step=self.iteration, poses=[aligned_pred_poses, poses_gt], cam_depth=0.1)
 
             self.scalars_to_log['train/R_error_mean'] = pose_error['R_error_mean']
             self.scalars_to_log['train/t_error_mean'] = pose_error['t_error_mean']
@@ -374,7 +374,6 @@ def log_view_to_tb(writer, global_step, args, model, ray_sampler, projector, gt_
 
 def train(args):
     device = "cuda:{}".format(args.local_rank)
-
     trainer = DBARFTrainer(args)
     trainer.train()
 

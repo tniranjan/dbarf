@@ -1,12 +1,12 @@
 ### INPUT
-expname = eval_llff
-rootdir = # REPLACE THIS with YOUR PATH.
-ckpt_path = # /home/chenyu/Datasets/IBRNet/pretrained_model/model_255000.pth   # REPLACE THIS with YOUR PATH.
+expname = eval_llff_pond_short
+rootdir = /home/niranjan/dbarf/dataset/# REPLACE THIS with YOUR PATH.
+ckpt_path = /home/niranjan/dbarf/dataset/out/finetune_llff_pond_short/model_best.pth # /home/chenyu/Datasets/IBRNet/pretrained_model/model_255000.pth   # REPLACE THIS with YOUR PATH.
 distributed = False
 
 ## dataset
-eval_dataset = llff_test
-eval_scenes = flower
+eval_dataset = llff
+eval_scenes = pond_short
 
 ### TESTING
 chunk_size = 4096

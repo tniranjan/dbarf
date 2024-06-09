@@ -13,13 +13,13 @@ echo $HOME_DIR
 if [ $TASK_TYPE = 'pretrain' ]
 then
     CONFIG_FILENAME="pretrain_dbarf"
-    ROOT_DIR=${HOME_DIR}/'Datasets/IBRNet/train'
+    ROOT_DIR=${HOME_DIR}/'dbarf/dataset/'
 else
-    CONFIG_FILENAME="finetune_dbarf"
-    ROOT_DIR=${HOME_DIR}/'Datasets/IBRNet/eval'
+    CONFIG_FILENAME="finetune_llff"
+    ROOT_DIR=${HOME_DIR}/'dbarf/dataset/'
 fi
 
-CODE_DIR=${HOME_DIR}'/Projects/dbarf'
+CODE_DIR=${HOME_DIR}'/dbarf'
 cd $CODE_DIR
 
 if [ $DISTRIBUTED = "True" ]; then

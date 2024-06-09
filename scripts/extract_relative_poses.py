@@ -10,7 +10,7 @@ from tqdm import tqdm
 import pycolmap
 from hloc.utils import viz_3d
 from hloc.utils.database import COLMAPDatabase, blob_to_array, pair_id_to_image_ids
-from hloc.triangulation import import_features, geometric_verification
+from hloc.triangulation import import_features, estimation_and_geometric_verification
 from disambiguation import calculate_geodesic_consistency_scores
 
 from scripts import extract_features, match_features, \
@@ -196,7 +196,7 @@ def main(args):
     import_matches(
         image_ids, database_path, match_pairs, matches_path,
         min_match_score=None, skip_geometric_verification=False)
-    geometric_verification(database_path, match_pairs, verbose=False)
+    estimation_and_geometric_verification(database_path, match_pairs)
 
     if args.disambiguate == True:
         print('Disambiguating Wrong Matches.')

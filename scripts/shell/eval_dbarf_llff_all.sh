@@ -6,22 +6,22 @@ GPU_ID=$2
 export PYTHONDONTWRITEBYTECODE=1
 
 HOME_DIR=$HOME
-EVAL_CODE_DIR=${HOME_DIR}/'Projects/dbarf/eval'
+EVAL_CODE_DIR=${HOME_DIR}/'dbarf/eval'
 cd $EVAL_CODE_DIR
 
-CONFIG_DIR=${HOME_DIR}/'Projects/dbarf/configs'
-ROOT_DIR=${HOME_DIR}/'Datasets/IBRNet/eval'
-CKPT_DIR=/home/chenyu/Datasets/IBRNet/eval/experimental_results/out/dbarf # ${HOME_DIR}/'Datasets/IBRNet/eval/out'
+CONFIG_DIR=${HOME_DIR}/'dbarf/configs'
+ROOT_DIR=${HOME_DIR}/'dbarf/dataset/'
+CKPT_DIR='/home/niranjan/dbarf/dataset/out/finetune_llff_pond_short/model/'
 
 EXPNAME='eval_dbarf_llff_finetune'
 
-scenes=("fern" "flower" "fortress" "horns" "leaves" "orchids" "room" "trex")
+scenes=("pond_short")
 
 for((i=0;i<${#scenes[@]};i++));
 do
     echo ${scenes[i]}
     # For pretrained model.
-    checkpoint_path=$HOME_DIR/Datasets/IBRNet/pretraining_dbarf/model/model_${ITER}.pth
+    checkpoint_path=/home/niranjan/dbarf/dataset/out/finetune_llff_pond_short/model_best.pth
     # ITER=200000
     # For fintuned checkpoint.
     ## checkpoint_path=${CKPT_DIR}/'finetune_dbarf_llff_'${scenes[i]}_200k/'model_'$ITER'.pth'

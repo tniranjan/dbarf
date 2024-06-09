@@ -116,10 +116,9 @@ class BaseTrainer(object):
         # please use distributed parallel on multiple GPUs to train multiple target views per batch
         self.train_loader = torch.utils.data.DataLoader(self.train_dataset, batch_size=1,
                                                    worker_init_fn=seed_worker,
-                                                   num_workers=self.config.workers,
+                                                   num_workers=8,
                                                    pin_memory=True,
-                                                   sampler=self.train_sampler,
-                                                   shuffle=True if self.train_sampler is None else False)
+                                                   shuffle=True)
 
         # Create validation dataset.
         self.val_dataset = dataset_dict[self.config.eval_dataset](self.config, 'validation',
@@ -175,7 +174,6 @@ class BaseTrainer(object):
     def train(self):
         assert self.train_loader is not None
         assert self.val_loader is not None
-
         pbar = tqdm.trange(self.config.n_iters, desc=f"Training {self.config.expname}", leave=False)
 
         iter_start = self.load_checkpoint(load_optimizer=not self.config.no_load_opt,
@@ -189,7 +187,6 @@ class BaseTrainer(object):
         
         self.epoch  = 0
         self.iteration = 0
-
         while self.iteration < iter_start:
             pbar.update(1)
             self.iteration += 1

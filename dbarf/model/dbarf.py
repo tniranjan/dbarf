@@ -16,7 +16,7 @@ class DBARFModel(IBRNetModel):
         self.pose_learner = DepthPoseNet(iters=12, pretrained=pretrained).to(device)
         self.photometric_loss = MultiViewPhotometricDecayLoss()
 
-        super(DBARFModel, self).__init__(args, load_opt, load_scheduler, half_feat_dim=True)
+        super(DBARFModel, self).__init__(args, load_opt, load_scheduler, half_feat_dim=False)
 
     def to_distributed(self):
         super().to_distributed()

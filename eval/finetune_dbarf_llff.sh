@@ -4,11 +4,11 @@ GPU_ID=$1
 
 HOME_DIR=$HOME #'/home/chenyu'
 echo $HOME_DIR
-CODE_DIR=${HOME_DIR}/'Projects/dbarf/ibrnet'
+CODE_DIR=${HOME_DIR}/'dbarf/ibrnet'
 CONFIG_DIR=$CODE_DIR/'configs'
-ROOT_DIR=${HOME_DIR}/'Datasets/IBRNet/eval'
+ROOT_DIR=${HOME_DIR}/'dbarf/dataset/train/pond_short/'
 EXPNAME='finetune_dbarf_llff'
-PRETRAINED_MODEL_PATH=${HOME_DIR}/'Datasets/IBRNet/pretrained_model/dbarf_model_200000.pth'
+PRETRAINED_MODEL_PATH=${HOME_DIR}/'dbarf/pretrained_model/dbarf_model_200000.pth'
 
 DATASET_NAME='llff_test'
 scenes=("fern" "flower" "fortress" "horns" "leaves" "orchids" "room" "trex")

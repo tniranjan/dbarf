@@ -155,6 +155,7 @@ class CheckPointManager(object):
             for model_name in models.keys():
                 if not model_name in state.keys():
                     continue
+                print(model_name)
                 models[model_name].load_state_dict(state[model_name])
 
         if optimizers is not None:

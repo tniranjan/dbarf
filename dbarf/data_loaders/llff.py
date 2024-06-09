@@ -26,7 +26,7 @@ from ..pose_util import PoseInitializer
 
 class LLFFDataset(Dataset):
     def __init__(self, args, mode, scenes=(), **kwargs):
-        base_dir = os.path.join(args.rootdir, 'real_iconic_noface/')
+        base_dir = os.path.join(args.rootdir, 'train/')
         self.args = args
         self.mode = mode  # train / test / validation
         self.num_source_views = args.num_source_views
@@ -100,6 +100,7 @@ class LLFFDataset(Dataset):
 
     def __getitem__(self, idx):
         rgb_file = self.render_rgb_files[idx]
+        # print(rgb_file, imageio.imread(rgb_file).shape)
         rgb = imageio.imread(rgb_file).astype(np.float32) / 255.
         render_pose = self.render_poses[idx]
         intrinsics = self.render_intrinsics[idx]

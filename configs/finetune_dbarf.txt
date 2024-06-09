@@ -1,7 +1,7 @@
 ### INPUT
-expname = finetune_dbarf_llff_fern
-rootdir = # REPLACE THIS with YOUR PATH.
-ckpt_path = /home/chenyu/Datasets/IBRNet/pretrained_model/dbarf_model_200000.pth # REPLACE THIS with YOUR PATH.
+expname = finetune_dbarf_pond_short
+rootdir = /home/niranjan/dbarf/dataset/ # REPLACE THIS with YOUR PATH.
+ckpt_path = /home/niranjan/dbarf/dbarf_model_200000.pth # REPLACE THIS with YOUR PATH.
 no_reload = False
 render_stride = 1 #2
 distributed = False
@@ -10,14 +10,14 @@ no_load_opt = True
 no_load_scheduler = True
 n_iters = 230000 # 200000+30000
 enable_tensorboard = True
-enable_visdom = True
+enable_visdom = False
 
 ## dataset
-train_dataset = llff_test # scannet
-train_scenes = fern # scene0000_00
-eval_dataset = llff_test # scannet
-eval_scenes = fern # scene0664_00
-num_source_views = 10
+train_dataset = train # scannet
+train_scenes = pond_short # scene0000_00
+eval_dataset = train # scannet
+eval_scenes = pond_short # scene0664_00
+num_source_views = 79
 selection_rule = view_graph
 
 ### TRAINING

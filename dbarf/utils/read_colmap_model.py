@@ -34,7 +34,7 @@ import sys
 import collections
 import numpy as np
 import struct
-
+import pycolmap
 from dbarf.geometry.rotation import (Rotation, Quaternion)
 
 
@@ -175,7 +175,8 @@ def read_images_binary(path_to_model_file):
     """
     images = {}
     with open(path_to_model_file, "rb") as fid:
-        num_reg_images = read_next_bytes(fid, 8, "Q")[0]
+        num_reg_images = read_next_bytes(fid, 8, "Q")[0] 
+        print(num_reg_images)
         for image_index in range(num_reg_images):
             binary_image_properties = read_next_bytes(
                 fid, num_bytes=64, format_char_sequence="idddddddi")

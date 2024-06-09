@@ -137,9 +137,12 @@ def _load_data(basedir, factor=None, width=None, height=None, load_imgs=True):
         print(imgdir, 'does not exist, returning')
         return
 
-    imgfiles = [os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if
-                f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')]
-
+    # imgfiles = [os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if
+    #             f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')]
+    imagesfile = os.path.join(basedir, 'sparse/0/images.bin')
+    imdata = read_images_binary(imagesfile)
+    imnames = [imdata[k].name[0:-4] for k in imdata]
+    imgfiles = [os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if f[0:-4] in imnames]
     if poses.shape[-1] != len(imgfiles):
         # print(f'\n num image_files: {len(imgfiles)}')
         # for image_file in imgfiles:

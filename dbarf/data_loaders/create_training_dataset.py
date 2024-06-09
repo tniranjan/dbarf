@@ -104,7 +104,9 @@ def create_training_dataset(args):
 
     print('training dataset: {}'.format(args.train_dataset))
     mode = 'train'
+    print(args)
     if '+' not in args.train_dataset:
+        print(dataset_dict.keys())
         train_dataset = dataset_dict[args.train_dataset](args, mode,
                                                          scenes=args.train_scenes
                                                          )

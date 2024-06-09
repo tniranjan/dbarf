@@ -139,11 +139,12 @@ class IBRNet(nn.Module):
 class IBRNetModel(Model):
     def __init__(self, args, load_opt=True, load_scheduler=True, half_feat_dim=False):
         self.args = args
+        print(args)
         device = torch.device('cuda:{}'.format(args.local_rank))
         
         # create coarse IBRNet
         self.net_coarse = IBRNet(args,
-                                 in_feat_ch=self.args.coarse_feat_dim//2 if half_feat_dim else self.args.coarse_feat_dim,
+                                 in_feat_ch=self.args.coarse_feat_dim,
                                  n_samples=self.args.N_samples).to(device)
         if args.coarse_only:
             self.net_fine = None
